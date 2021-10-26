@@ -21,7 +21,7 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.home),
     path('admin/', admin.site.urls),
     path('educat/', include('educat.urls')),
 

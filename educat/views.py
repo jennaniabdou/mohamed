@@ -23,17 +23,29 @@ def category(request):
 
 
 
-def search(request):
-    query = request.GET.get('query')
-    resultats = Module.objects.filter(name__icontains=query)
-     
-    context = {
+def search(request, *args, **kwargs):
+	query = request.GET.get('query')
+	resultats = Module.objects.filter(name__icontains=query)
+	context = {
         'resultat': resultats,
-		    
-		}
-    return render(request, 'educat/base.html', context, name=search)
+	}
+	return render(request,'educat/base.html', context, name='search')
 
 
 
-def eps(request):
-	return render(request, 'educat/base.html')
+def moduledetails(request):
+	id = request.GET.get(query)
+	module = Module.objects.filter(pk=id)
+	context = {
+		'module': module
+	}
+	return render(request, 'educat/base2.html', context)
+
+
+def home(request):
+	categories = Type.objects.all()
+	context = {
+		'categories': categories
+	}
+
+	return render(request, 'educat/base.html', context)

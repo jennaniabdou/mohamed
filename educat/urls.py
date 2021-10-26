@@ -1,15 +1,19 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
-from django.conf.urls.static import static
+
 
 
 urlpatterns = [
 
 	path('', views.index),
 
-	path('categories/', views.category, name='categories'),
+	path('categories/', views.category, name="categories"),
 
-	path('^(?P<query>[A-Z][a-z]+)/$', views.search),
+	path('search/<str:query>/', views.search, name="search"),
+
+    path('module/<int:id>/', views.moduledetails, name="moduledetails"),
+
+
 
 
 

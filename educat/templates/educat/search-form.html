@@ -4,7 +4,7 @@
       <h1>Bienvenue !</h1>
       <p> <span class="typed" data-typed-items="Saisissez les termes de votre recherche, OU, Suivez la bare de navigation"></span></p>
        <div class="InputContainer">
-           <form method="get" action="">
+           <form method="POST" action="{% csrf_token %}">
       <input placeholder="termes de recherche ici" class="form-control" name="query" />
       <button type="button" class="btn btn-outline-primary">Lancer la Recherche</button>
            </form>
